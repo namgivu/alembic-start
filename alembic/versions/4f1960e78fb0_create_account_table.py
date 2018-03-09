@@ -1,7 +1,7 @@
 """create account table
 
 Revision ID: 4f1960e78fb0
-Revises: 
+Revises:
 Create Date: 2018-03-09 23:51:43.787055
 
 """
@@ -17,8 +17,13 @@ depends_on = None
 
 
 def upgrade():
-    pass
-
+    op.create_table(
+        'account',
+        sa.Column('id',    sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('name',  sa.String),
+        sa.Column('email', sa.String,  nullable=False),
+    )
 
 def downgrade():
-    pass
+    op.drop_table('account')
+
