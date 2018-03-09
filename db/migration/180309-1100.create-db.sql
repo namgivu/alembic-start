@@ -1,0 +1,1 @@
+CREATE DATABASE alembic_start;
