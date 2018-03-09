@@ -53,3 +53,12 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
     
   all alembic op commands
   ref. http://alembic.zzzcomputing.com/en/latest/ops.html#ops
+
+  dump postgres db
+  ref. https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
+  ```bash
+  sudo su - postgres
+  pg_dump alembic_start > /tmp/dump-db.sql
+  exit
+  cp /tmp/dump-db.sql "$CODE/db/dump-db.sql"
+  ```
