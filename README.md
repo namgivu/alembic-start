@@ -15,7 +15,7 @@ pip install -r requirements.txt
 #alembic tutorial 
 ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
 
-  init
+  ##init
   ```bash
   alembic init alembic
   ```
@@ -32,3 +32,7 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   - timezone = SGT
   - sqlalchemy.url = driver://user:pass@localhost/dbname
 
+  ##create new migration
+  ```bash
+  alembic revision -m 'create account table'
+  ```
