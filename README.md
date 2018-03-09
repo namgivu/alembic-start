@@ -50,7 +50,8 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
     For each revision in the path, *call upgrade()* method is called
     
     Q:what is current version, how to know it, what indicate its value?
-    A:the single-cell table stores this value alembic_version
+    A1:the single-cell table stores this value alembic_version
+    A2:`alembic current`
 
   ##create 2nd migration
   ```bash
@@ -61,14 +62,26 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   
     
 #misc
-all alembic op commands
-ref. http://alembic.zzzcomputing.com/en/latest/ops.html#ops
 
-dump postgres db
-ref. https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
-```bash
-sudo su - postgres
-pg_dump alembic_start > /tmp/dump-db.sql
-exit
-cp /tmp/dump-db.sql "$CODE/db/dump-db.sql"
-```
+  ##all alembic op commands
+  ref. http://alembic.zzzcomputing.com/en/latest/ops.html#ops
+  
+  ##dump postgres db
+  ref. https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
+  ```bash
+  sudo su - postgres
+  pg_dump alembic_start > /tmp/dump-db.sql
+  exit
+  cp /tmp/dump-db.sql "$CODE/db/dump-db.sql"
+  ```
+  
+  ##switching between revision
+  ```bash
+  alembic upgrade   ae1
+  alembic upgrade   +2
+  alembic downgrade -1
+  alembic upgrade   ae1+2
+  
+  alembic upgrade   head #up to latest
+  alembic downgrade base #down to beginning
+  ```
