@@ -41,7 +41,8 @@ SET default_with_oids = false;
 CREATE TABLE account (
     id integer NOT NULL,
     name character varying,
-    email character varying NOT NULL
+    email character varying NOT NULL,
+    updated_at timestamp without time zone
 );
 
 
@@ -90,7 +91,7 @@ ALTER TABLE ONLY account ALTER COLUMN id SET DEFAULT nextval('account_id_seq'::r
 -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY account (id, name, email) FROM stdin;
+COPY account (id, name, email, updated_at) FROM stdin;
 \.
 
 
@@ -106,7 +107,7 @@ SELECT pg_catalog.setval('account_id_seq', 1, false);
 --
 
 COPY alembic_version (version_num) FROM stdin;
-4f1960e78fb0
+35a2eeb252d0
 \.
 
 

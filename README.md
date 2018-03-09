@@ -49,16 +49,26 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
     and then calculates *revision-path* from this version to the version requested i.e  *head*  
     For each revision in the path, *call upgrade()* method is called
     
-    #TODO what is current version, how to know it, what indicate its value?
-    
-  all alembic op commands
-  ref. http://alembic.zzzcomputing.com/en/latest/ops.html#ops
+    Q:what is current version, how to know it, what indicate its value?
+    A:the single-cell table stores this value alembic_version
 
-  dump postgres db
-  ref. https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
+  ##create 2nd migration
   ```bash
-  sudo su - postgres
-  pg_dump alembic_start > /tmp/dump-db.sql
-  exit
-  cp /tmp/dump-db.sql "$CODE/db/dump-db.sql"
+  alembic revision -m "Add a column"
+  : #edit the upgrade() and downgrade()
+  alembic upgrade head 
   ```
+  
+    
+#misc
+all alembic op commands
+ref. http://alembic.zzzcomputing.com/en/latest/ops.html#ops
+
+dump postgres db
+ref. https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
+```bash
+sudo su - postgres
+pg_dump alembic_start > /tmp/dump-db.sql
+exit
+cp /tmp/dump-db.sql "$CODE/db/dump-db.sql"
+```
