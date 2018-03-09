@@ -11,3 +11,8 @@ install requirements
 source ./venv3/bin/activate
 pip install -r requirements.txt
 ```
+
+alembic tutorial ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
+```bash
+alembic init alembic
+```
