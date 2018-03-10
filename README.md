@@ -55,7 +55,7 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
 
   ##create 2nd migration
   ```bash
-  alembic revision -m "Add a column"
+  alembic revision -m 'Add a column'
   : #edit the upgrade() and downgrade()
   alembic upgrade head 
   ```
@@ -82,6 +82,29 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   alembic downgrade -1
   alembic upgrade   ae1+2
   
-  alembic upgrade   head #up to latest
-  alembic downgrade base #down to beginning
+  alembic downgrade base #back to the beginning
+  alembic upgrade   head #up to the latest
+  
+  alembic revision -m 'migration name' #create new revision
+  
+  alembic current #view current revision
+  alembic history           #view history
+  alembic history --verbose #view history
+  alembic history -r-3:     #view last 3 revision to current; more range syntax ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html#viewing-history-ranges
   ```
+
+  ##running plain/raw sql in migration up-down
+  ref. https://www.johbo.com/2016/data-migrations-with-alembic-plain-sql.html
+  sample code
+  ```
+  def upgrade():
+    sql_up = '''
+        YOUR SELECT QUERY
+    '''
+    c=op.get_bind(); c.execute(sql_up)
+  ```
+  comment
+  > Quite often a good old plain SQL statement seems to be good enough to get the job done
+  > Drawback: 
+    Limited to support multiple database systems due to different sql dialects are used --> cannot write a single plain sql for that. 
+    It is then better to use a higher abstraction level
