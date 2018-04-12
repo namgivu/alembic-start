@@ -114,3 +114,14 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   alembic heads #list all heads
   alembic merge -m 'message for this merage' r01 r02 ... #listing the revision to merge as r01 r02; values taken from `alembic heads` command
   ```
+
+  ##use variable to define value
+  var02=%(var01)s/some-string
+
+  ##multiple script locations
+  ref. http://alembic.zzzcomputing.com/en/latest/branches.html#setting-up-multiple-version-directories
+  defined by the entry/variable **version_locations** in `alembic.ini`
+  eg.
+  version_locations = %(here)s/location01/versions %(here)s/location02/versions
+
+
