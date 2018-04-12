@@ -122,7 +122,19 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   ref. http://alembic.zzzcomputing.com/en/latest/branches.html#setting-up-multiple-version-directories
   defined by the entry/variable **version_locations** in `alembic.ini`
   eg.
-  version_locations = %(here)s/location01/versions %(here)s/location02/versions
+  ```
+  #eg01
+  version_locations = %(here)s/bar %(here)s/bat %(here)s/alembic/versions
+  
+  #eg02
+  rh = %(here)s/%(script_location)s/versions
+  version_locations = %(rh)s %(rh)s/1803
+  ```
+  
+  NOTE: 
+  - `alembic revision -m 'some message'` will add new revision to previous revision's location
+  - to change folder, use --version-path ie. `alembic revision -m 'some message' --version-path 'folder path listed in version_locations'` 
+  
   NOTE: When using **version_locations**, value defined by **script_location** will be ignored ref. https://bitbucket.org/zzzeek/alembic/issues/124#comment-44658866
 
 
