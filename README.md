@@ -108,3 +108,9 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   > Drawback: 
     Limited to support multiple database systems due to different sql dialects are used --> cannot write a single plain sql for that. 
     It is then better to use a higher abstraction level
+
+  ##merge revisions when merging git branches
+  ```
+  alembic heads #list all heads
+  alembic merge -m 'message for this merage' r01 r02 ... #listing the revision to merge as r01 r02; values taken from `alembic heads` command
+  ```
