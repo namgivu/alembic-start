@@ -123,5 +123,6 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   defined by the entry/variable **version_locations** in `alembic.ini`
   eg.
   version_locations = %(here)s/location01/versions %(here)s/location02/versions
+  NOTE: When using **version_locations**, value defined by **script_location** will be ignored ref. https://bitbucket.org/zzzeek/alembic/issues/124#comment-44658866
 
 
