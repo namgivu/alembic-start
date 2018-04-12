@@ -132,8 +132,11 @@ ref. http://alembic.zzzcomputing.com/en/latest/tutorial.html
   ```
   
   NOTE: 
-  - `alembic revision -m 'some message'` will add new revision to previous revision's location
-  - to change folder, use --version-path ie. `alembic revision -m 'some message' --version-path 'folder path listed in version_locations'` 
+  - creating new revision by `alembic revision -m 'some message'` will reuse folder of previous revision
+    to choose new folder, use **--version-path** 
+    ie. `alembic revision -m 'some message' --version-path 'folder path listed in version_locations'` 
+  - to **move current revision files** to a folder `YYmm`, 
+    do moving them normally and add the new folder to `version_locations` in alembic.ini
   
   NOTE: When using **version_locations**, value defined by **script_location** will be ignored ref. https://bitbucket.org/zzzeek/alembic/issues/124#comment-44658866
 
